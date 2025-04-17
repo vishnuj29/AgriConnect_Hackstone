@@ -42,11 +42,19 @@ AgriConnect is an AI-powered agricultural marketplace that connects farmers dire
 •  Responsive Design: Mobile-first approach
 
 ## 📁 Project Structure
+project/
+├── index.html                # Landing page with marketing content
+├── farmer-dashboard.html     # Farmer interface
+├── buyer-dashboard.html      # Buyer interface
+├── assets/
+│   ├── css/                  # Custom CSS files
+│   ├── js/                   # JavaScript files
+│   ├── images/               # Project images
+├── README.md                 # Project documentation
 
 
 
-
-###  Installation
+### 🛠️ Installation
 No installation required - this is a static website that can be deployed directly:
 
    1.Clone the repository:
@@ -80,4 +88,4 @@ Location: Greater Noida, India
 
 
 
-Open your browser at(https://agriconnectweb.netlify.app/) (default Vite port).
+Open your browser at https://agriconnectweb.netlify.app/ (default Vite port).
