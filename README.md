@@ -86,6 +86,6 @@ Phone: +91 9651164522
 
 Location: Greater Noida, India
 
-
+https://github.com/user-attachments/assets/c7da1b60-12ec-4316-a1c9-a1b1d874413c
 
 Open your browser at https://agriconnectweb.netlify.app/ (default Vite port).
