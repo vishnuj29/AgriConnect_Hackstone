@@ -77,3 +77,7 @@ Email: vtricks34@gmail.com
 Phone: +91 9651164522
 
 Location: Greater Noida, India
+
+
+
+Open your browser at(https://agriconnectweb.netlify.app/) (default Vite port).
