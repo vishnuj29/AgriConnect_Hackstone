@@ -1,4 +1,4 @@
-## AgriConnect
+## AgriConnect(Hackstone)
 AgriConnect is an AI-powered agricultural marketplace that connects farmers directly with buyers, eliminating middlemen, reducing waste, and ensuring fair prices for agricultural produce.
 
 ## 🌿 Features
