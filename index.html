@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriConnect - Direct Agricultural Marketplace</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #2e7d32;
+            --secondary-green: #81c784;
+            --accent-orange: #ff8f00;
+            --light-bg: #f5f5f5;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+        
+        .feature-card {
+            transition: transform 0.3s;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stats-section {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .cta-section {
+            background-color: var(--accent-orange);
+            padding: 80px 0;
+            color: white;
+        }
+        
+        .nav-item {
+            margin: 0 10px;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
+        }
+        
+        .btn-outline-light:hover {
+            background-color: var(--primary-green);
+        }
+        
+        .modal-content {
+            border-radius: 15px;
+        }
+        
+        .modal-header {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .modal-footer {
+            border-top: none;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 0.25rem rgba(46, 125, 50, 0.25);
+        }
+        
+        .auth-tabs .nav-link {
+            color: #495057;
+            font-weight: 500;
+        }
+        
+        .auth-tabs .nav-link.active {
+            color: var(--primary-green);
+            font-weight: 600;
+        }
+        
+        /* New styles for added sections */
+        .process-step {
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary-green);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="download.png"  height="40" class="d-inline-block align-top me-2">
+                AgriConnect
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#how-it-works">How It Works</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#impact">Impact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                <div class="ms-3">
+                    <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#authModal" data-tab="login">Login</button>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#authModal" data-tab="signup">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section animate_animated animate_fadeIn">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-4">Connecting Farmers Directly to Markets</h1>
+            <p class="lead mb-5">Eliminating middlemen, reducing waste, and ensuring fair prices through our AI-powered agricultural marketplace</p>
+            <div class="d-flex justify-content-center gap-3">
+                <button class="btn btn-primary btn-lg px-4" data-bs-toggle="modal" data-bs-target="#authModal" data-tab="signup" onclick="setSignupType('farmer')">I'm a Farmer</button>
+                <button class="btn btn-outline-light btn-lg px-4" data-bs-toggle="modal" data-bs-target="#authModal" data-tab="signup" onclick="setSignupType('buyer')">I'm a Buyer</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center mb-5">Problems We Solve</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 feature-card">
+                        <div class="card-body">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-store-slash fa-3x text-danger"></i>
+                            </div>
+                            <h5 class="card-title text-center">Limited Market Access</h5>
+                            <p class="card-text">Farmers often have restricted access to broader markets beyond their local area.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 feature-card">
+                        <div class="card-body">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-money-bill-wave fa-3x text-warning"></i>
+                            </div>
+                            <h5 class="card-title text-center">Low Profit Margins</h5>
+                            <p class="card-text">Middlemen take significant cuts, leaving farmers with minimal profits.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 feature-card">
+                        <div class="card-body">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-apple-alt fa-3x text-success"></i>
+                            </div>
+                            <h5 class="card-title text-center">Wasted Produce</h5>
+                            <p class="card-text">Up to 40% of produce is wasted due to lack of buyers and poor logistics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Key Features</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100 feature-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Smart Matchmaking System</h5>
+                            <p class="card-text">Our AI algorithm connects farmers with the most suitable buyers based on product type, quantity, location, and pricing preferences.</p>
+                            <div class="text-end">
+                                <span class="badge bg-primary">AI-Powered</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 feature-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Dynamic Pricing Tools</h5>
+                            <p class="card-text">Real-time market data helps farmers set competitive prices and negotiate directly with buyers through our platform.</p>
+                            <div class="text-end">
+                                <span class="badge bg-success">Real-Time</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 feature-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Integrated Logistics</h5>
+                            <p class="card-text">Seamless coordination with transportation providers to ensure timely delivery of produce from farm to buyer.</p>
+                            <div class="text-end">
+                                <span class="badge bg-warning text-dark">Optimized</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 feature-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Multi-Channel Access</h5>
+                            <p class="card-text">Platform accessible via web, mobile app, and even SMS/USSD for farmers with limited internet access.</p>
+                            <div class="text-end">
+                                <span class="badge bg-info">Inclusive</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center mb-5">How AgriConnect Works</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="process-step mb-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0 bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">1</div>
+                            <div class="flex-grow-1 ms-3">
+                                <h5>Farmer Registration</h5>
+                                <p>Farmers create profiles listing their products, quantities, and locations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="process-step mb-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0 bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">2</div>
+                            <div class="flex-grow-1 ms-3">
+                                <h5>Real-Time Inventory</h5>
+                                <p>Farmers update their available produce which is visible to buyers instantly.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="process-step mb-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0 bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">3</div>
+                            <div class="flex-grow-1 ms-3">
+                                <h5>Smart Matching</h5>
+                                <p>Our AI connects farmers with suitable buyers based on multiple factors.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="process-step mb-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0 bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">4</div>
+                            <div class="flex-grow-1 ms-3">
+                                <h5>Secure Transaction</h5>
+                                <p>Buyers purchase through our secure payment gateway with escrow protection.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0 bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">5</div>
+                            <div class="flex-grow-1 ms-3">
+                                <h5>Logistics Coordination</h5>
+                                <p>Our system arranges optimal transportation for timely delivery.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://via.placeholder.com/600x400" alt="AgriConnect Process Flow" class="img-fluid rounded animate_animated animate_fadeInRight">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h3 class="display-4 fw-bold">70%</h3>
+                    <p class="mb-0">Farmers prefer SMS updates</p>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h3 class="display-4 fw-bold">40%</h3>
+                    <p class="mb-0">Higher profits for farmers</p>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h3 class="display-4 fw-bold">30%</h3>
+                    <p class="mb-0">Reduction in food waste</p>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="display-4 fw-bold">22%</h3>
+                    <p class="mb-0">Farmers familiar with digital payments</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Impact</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border-success">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">Positive Impacts</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Direct market access increases farmer incomes by 40% on average</li>
+                                <li class="list-group-item">Reduction in post-harvest losses through better market connections</li>
+                                <li class="list-group-item">Improved price transparency benefits both farmers and buyers</li>
+                                <li class="list-group-item">Promotion of sustainable farming practices through our education platform</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 border-warning">
+                        <div class="card-header bg-warning text-dark">
+                            <h5 class="mb-0">Challenges Addressed</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Digital literacy through simplified interfaces and training</li>
+                                <li class="list-group-item">Connectivity issues with SMS/USSD fallback options</li>
+                                <li class="list-group-item">Building trust with verified profiles and escrow payments</li>
+                                <li class="list-group-item">Logistics optimization through our partner network</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container text-center">
+            <h2 class="display-5 fw-bold mb-4">Ready to Transform Agricultural Trading?</h2>
+            <p class="lead mb-5">Join thousands of farmers and buyers who are already benefiting from direct connections</p>
+            <div class="d-flex justify-content-center gap-3">
+                <button class="btn btn-light btn-lg px-4" data-bs-toggle="modal" data-bs-target="#authModal" data-tab="signup" onclick="setSignupType('farmer')">Farmer Registration</button>
+                <button class="btn btn-dark btn-lg px-4" data-bs-toggle="modal" data-bs-target="#authModal" data-tab="signup" onclick="setSignupType('buyer')">Buyer Registration</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5>AgriConnect</h5>
+                    <p>Connecting farmers directly to markets through technology, eliminating middlemen, and ensuring fair prices for all.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="#features" class="text-white text-decoration-none">Features</a></li>
+                        <li class="mb-2"><a href="#how-it-works" class="text-white text-decoration-none">How It Works</a></li>
+                        <li class="mb-2"><a href="#impact" class="text-white text-decoration-none">Impact</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5>Resources</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Farmer Guides</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Pricing Strategies</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Sustainable Practices</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5>Contact Us</h5>
+                    <address>
+                        <p><i class="fas fa-map-marker-alt me-2"></i> Greater Noida , India</p>
+                        <p><i class="fas fa-phone me-2"></i> +91 9651164522</p>
+                        <p><i class="fas fa-envelope me-2"></i> vtricks34@gmail.com</p>
+                    </address>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 AgriConnect. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">A Hackstone Production</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <ul class="nav nav-tabs auth-tabs w-100" id="authTabs" role="tablist">
+                        <li class="nav-item w-50 text-center">
+                            <button class="nav-link active w-100" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab">Login</button>
+                        </li>
+                        <li class="nav-item w-50 text-center">
+                            <button class="nav-link w-100" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup" type="button" role="tab">Sign Up</button>
+                        </li>
+                    </ul>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="tab-content" id="authTabsContent">
+                        <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                            <form id="loginForm">
+                                <div class="mb-3">
+                                    <label for="loginEmail" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="loginEmail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="loginPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="loginPassword" required>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">Remember me</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Login</button>
+                            </form>
+                            <div class="text-center mt-3">
+                                <a href="#" class="text-decoration-none">Forgot password?</a>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
+                            <form id="signupForm">
+                                <div class="mb-3">
+                                    <label for="signupName" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="signupName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signupEmail" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="signupEmail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signupPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="signupPassword" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control" id="signupConfirmPassword" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">I am a:</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="userType" id="farmerType" value="farmer" checked>
+                                        <label class="form-check-label" for="farmerType">
+                                            Farmer/Producer
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="userType" id="buyerType" value="buyer">
+                                        <label class="form-check-label" for="buyerType">
+                                            Buyer/Retailer
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                                    <label class="form-check-label" for="agreeTerms">I agree to the <a href="#">Terms and Conditions</a></label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Create Account</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <p class="mb-0">By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Activate the correct tab when modal is shown
+        document.getElementById('authModal').addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const tab = button.getAttribute('data-tab');
+            
+            if (tab === 'signup') {
+                const signupTab = new bootstrap.Tab(document.getElementById('signup-tab'));
+                signupTab.show();
+            }
+        });
+
+        // Helper function for hero section buttons
+        function setSignupType(userType) {
+            document.getElementById(userType + 'Type').checked = true;
+        }
+
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real app, verify credentials with backend
+            const userType = localStorage.getItem('currentUserType') || 'farmer';
+            
+            const modal = bootstrap.Modal.getInstance(document.getElementById('authModal'));
+            modal.hide();
+            
+            // Redirect to appropriate dashboard
+            window.location.href = userType === 'farmer' ? 'farmer-dashboard.html' : 'buyer-dashboard.html';
+        });
+
+        // Signup form submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const userType = document.querySelector('input[name="userType"]:checked').value;
+            
+            // Store user type for this demo
+            localStorage.setItem('currentUserType', userType);
+            
+            const modal = bootstrap.Modal.getInstance(document.getElementById('authModal'));
+            modal.hide();
+            
+            // Redirect to appropriate dashboard
+            window.location.href = userType === 'farmer' ? 'farmer-dashboard.html' : 'buyer-dashboard.html';
+        });
+    </script>
+</body>
+</html>
